@@ -1,44 +1,26 @@
-package org.tasks;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
-public class Task3 {
-
-	public static void main(String[] args) {
-		
-		Scanner in = new Scanner(System.in);
-		System.out.println("Enter size:");
-		int n=in.nextInt();
-		System.out.println("Enter array elements");
-		int a[]=new int[10];
-		int max=0;
-		for(int i=0;i<n;i++)
-		{
-			a[i]=in.nextInt();
-			if(a[i]>max)
-				max=a[i];
-		}
-		List<Integer> li = new ArrayList<Integer>();
-		int f=0,s=1,next=0;
-		next=f+s;
-		while(next<max)
-		{
-			li.add(next);
-			f=s;
-			s=next;
-			next=f+s;	
-		}
-		for(int i=0;i<a.length;i++)
-		{
-			if(li.contains(a[i]))
-			{
-				System.out.print(a[i]+" ");
+import java.util.*;
+import java.lang.*;
+class Task3{
+	public static void main (String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("enter string:");
+		String str = sc.next();
+		StringBuffer sb = new StringBuffer();
+		int max=0;StringBuffer ls=new StringBuffer();
+		for(int i=1;i<str.length();){   
+			if(str.charAt(i-1)+1==str.charAt(i)){
+				sb.append(str.charAt(i-1)).append(str.charAt(i));
+				i=i+2;
+			} 
+			else{
+				if(sb.length()>ls.length()){
+					ls=sb;
+					sb.delete(0, sb.length());
+				}
+				i++;
 			}
 		}
-		
-
+		System.out.println("Largest consecutive sequence is:"+ls);
 	}
-
 }

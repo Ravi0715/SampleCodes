@@ -23,9 +23,7 @@ public class LongestString {
 			ht.put(s, s.length());
 		}
 		int pos=0;
-		
 		Set<Entry<String, Integer>> se= ht.entrySet();
-		
 		Iterator<Entry<String, Integer>> ie =se.iterator();
 		int i=0;
 		while(ie.hasNext())

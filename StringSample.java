@@ -1,30 +1,24 @@
-package org.tasks;
+import java.util.*;
+public class StringSample
+{
 
-import java.util.Scanner;
-
-public class StringSample {
-	
-	public static boolean isRotated(String s1,String s2)
+	public static void main(String args[])
 	{
-		String s3 = s1.substring(1, 3);
-		String s4 = s1.substring(0,1)+s1.substring(3, s1.length())+s3;
-		if(s2.equalsIgnoreCase(s4))
-			return true;
-		else
-			return false;
-		
+	Scanner in = new Scanner(System.in);
+	System.out.println("Enter String");
+	String s=in.nextLine();
+	int count=0;
+	for(int i=0;i<s.length();i++)
+	{
+		char ch=s.charAt(i);
+		if(ch=='(')
+			count++;
+		if(ch==')')
+			count--;
 	}
-
-	public static void main(String[] args) {
-		
-		Scanner in = new Scanner(System.in);
-		System.out.println("Enter the string s1 and string s2");
-		String s1 = in.next();
-		String s2 =in.next();
-		if(isRotated(s1, s2))
-			System.out.println("True");
-		else
-			System.out.println("False");
-	}
-
+	if(count==0)
+		System.out.println("0");
+	else
+		System.out.println("1");
+}
 }

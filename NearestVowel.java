@@ -1,10 +1,4 @@
-package org.tasks;
-
-
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeMap;
-import java.util.TreeSet;
+import java.util.*;
 
 public class NearestVowel {
 
@@ -13,7 +7,6 @@ public class NearestVowel {
 		Scanner in = new Scanner(System.in);
 		System.out.println("Enter Character:");
 		char c =in.next().charAt(0);
-		char c1=c;
 		c=Character.toLowerCase(c);
 		if(!((c>='a')&&(c<='z')))
 		{
@@ -64,19 +57,11 @@ public class NearestVowel {
 		
 		for(Map.Entry<Character,Integer> en:tm.entrySet())
 		{
+			
 			if(min==en.getValue())
-			{
-				if(Character.isUpperCase(c1))
-				{
-					System.out.print(Character.toUpperCase(en.getKey())+" ");
-				}
-				else
-				{
-					System.out.print(Character.toLowerCase(en.getKey())+" ");
-				}
-			}
+				System.out.print(en.getKey()+" ");
+			
 		}
-		
 	}
 
 }

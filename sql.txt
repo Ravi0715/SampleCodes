@@ -1,0 +1,300 @@
+
+no rows selected
+
+SQL> select * from (select sal,ename,eid,rownum r from (select * from employee o
+rder by sal desc)) where r=2;
+
+       SAL ENAME                       EID          R
+---------- -------------------- ---------- ----------
+     65204 ravi                        104          2
+
+SQL> select * from (select sal,ename,eid,rownum r from (select * from employee o
+rder by sal desc)) where r=1;
+
+       SAL ENAME                       EID          R
+---------- -------------------- ---------- ----------
+     65221 mythri                      108          1
+
+SQL> select * from (select sal,ename,eid,rownum r from (select * from employee o
+rder by sal desc)) where r=&a;
+Enter value for a: 5
+old   1: select * from (select sal,ename,eid,rownum r from (select * from employ
+ee order by sal desc)) where r=&a
+new   1: select * from (select sal,ename,eid,rownum r from (select * from employ
+ee order by sal desc)) where r=5
+
+       SAL ENAME                       EID          R
+---------- -------------------- ---------- ----------
+     45646 kiran                       106          5
+
+SQL> select count(eid) from employee
+  2  ;
+
+COUNT(EID)
+----------
+        11
+
+SQL> select * from (select sal,ename,eid,rownum r from (select * from employee o
+rder by sal desc)) where r=(select count(eid) from employee)-&a;
+Enter value for a: 5
+old   1: select * from (select sal,ename,eid,rownum r from (select * from employ
+ee order by sal desc)) where r=(select count(eid) from employee)-&a
+new   1: select * from (select sal,ename,eid,rownum r from (select * from employ
+ee order by sal desc)) where r=(select count(eid) from employee)-5
+
+       SAL ENAME                       EID          R
+---------- -------------------- ---------- ----------
+     33100 dinesh                      109          6
+
+SQL> /
+Enter value for a: 6
+old   1: select * from (select sal,ename,eid,rownum r from (select * from employ
+ee order by sal desc)) where r=(select count(eid) from employee)-&a
+new   1: select * from (select sal,ename,eid,rownum r from (select * from employ
+ee order by sal desc)) where r=(select count(eid) from employee)-6
+
+       SAL ENAME                       EID          R
+---------- -------------------- ---------- ----------
+     45646 kiran                       106          5
+
+SQL> /
+Enter value for a: 1
+old   1: select * from (select sal,ename,eid,rownum r from (select * from employ
+ee order by sal desc)) where r=(select count(eid) from employee)-&a
+new   1: select * from (select sal,ename,eid,rownum r from (select * from employ
+ee order by sal desc)) where r=(select count(eid) from employee)-1
+
+       SAL ENAME                       EID          R
+---------- -------------------- ---------- ----------
+      2500 john                        101         10
+
+SQL> /
+Enter value for a: 11
+old   1: select * from (select sal,ename,eid,rownum r from (select * from employ
+ee order by sal desc)) where r=(select count(eid) from employee)-&a
+new   1: select * from (select sal,ename,eid,rownum r from (select * from employ
+ee order by sal desc)) where r=(select count(eid) from employee)-11
+
+no rows selected
+
+SQL> /
+Enter value for a: 10
+old   1: select * from (select sal,ename,eid,rownum r from (select * from employ
+ee order by sal desc)) where r=(select count(eid) from employee)-&a
+new   1: select * from (select sal,ename,eid,rownum r from (select * from employ
+ee order by sal desc)) where r=(select count(eid) from employee)-10
+
+       SAL ENAME                       EID          R
+---------- -------------------- ---------- ----------
+     65221 mythri                      108          1
+
+SQL> /
+Enter value for a: 10
+old   1: select * from (select sal,ename,eid,rownum r from (select * from employ
+ee order by sal desc)) where r=(select count(eid) from employee)-&a
+new   1: select * from (select sal,ename,eid,rownum r from (select * from employ
+ee order by sal desc)) where r=(select count(eid) from employee)-10
+
+       SAL ENAME                       EID          R
+---------- -------------------- ---------- ----------
+     65221 mythri                      108          1
+
+SQL> /
+Enter value for a: 9
+old   1: select * from (select sal,ename,eid,rownum r from (select * from employ
+ee order by sal desc)) where r=(select count(eid) from employee)-&a
+new   1: select * from (select sal,ename,eid,rownum r from (select * from employ
+ee order by sal desc)) where r=(select count(eid) from employee)-9
+
+       SAL ENAME                       EID          R
+---------- -------------------- ---------- ----------
+     65204 ravi                        104          2
+
+SQL> select * from (select sal,ename,eid,rownum r from (select * from employee o
+rder by sal asc)) where r=&a;
+Enter value for a: 1
+old   1: select * from (select sal,ename,eid,rownum r from (select * from employ
+ee order by sal asc)) where r=&a
+new   1: select * from (select sal,ename,eid,rownum r from (select * from employ
+ee order by sal asc)) where r=1
+
+       SAL ENAME                       EID          R
+---------- -------------------- ---------- ----------
+      2250 jack                        103          1
+
+SQL> select * from (select sal,ename,eid,rownum r from (select * from employee o
+rder by sal desc)) where r=&a;
+Enter value for a: 1
+old   1: select * from (select sal,ename,eid,rownum r from (select * from employ
+ee order by sal desc)) where r=&a
+new   1: select * from (select sal,ename,eid,rownum r from (select * from employ
+ee order by sal desc)) where r=1
+
+       SAL ENAME                       EID          R
+---------- -------------------- ---------- ----------
+     65221 mythri                      108          1
+
+SQL> select eid,ename,rownum r from employee where rownum=&a order by desc;
+Enter value for a: 1
+old   1: select eid,ename,rownum r from employee where rownum=&a order by desc
+new   1: select eid,ename,rownum r from employee where rownum=1 order by desc
+select eid,ename,rownum r from employee where rownum=1 order by desc
+                                                                *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> select eid,ename,rownum r from employee where rownum=&a order by sal desc;
+Enter value for a: 1
+old   1: select eid,ename,rownum r from employee where rownum=&a order by sal de
+sc
+new   1: select eid,ename,rownum r from employee where rownum=1 order by sal des
+c
+
+       EID ENAME                         R
+---------- -------------------- ----------
+       100 peter                         1
+
+SQL> select eid,ename,rownum r from (select * from employee order by desc) where
+ rownum=&a;
+Enter value for a: 1
+old   1: select eid,ename,rownum r from (select * from employee order by desc) w
+here rownum=&a
+new   1: select eid,ename,rownum r from (select * from employee order by desc) w
+here rownum=1
+select eid,ename,rownum r from (select * from employee order by desc) where rown
+um=1
+                                                                *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> select eid,ename,rownum r from (select * from employee order by sal desc) w
+here rownum=&a;
+Enter value for a: 1
+old   1: select eid,ename,rownum r from (select * from employee order by sal des
+c) where rownum=&a
+new   1: select eid,ename,rownum r from (select * from employee order by sal des
+c) where rownum=1
+
+       EID ENAME                         R
+---------- -------------------- ----------
+       108 mythri                        1
+
+SQL> select eid,ename,rownum,sal r from (select * from employee order by sal des
+c) where rownum=&a;
+Enter value for a: 1
+old   1: select eid,ename,rownum,sal r from (select * from employee order by sal
+ desc) where rownum=&a
+new   1: select eid,ename,rownum,sal r from (select * from employee order by sal
+ desc) where rownum=1
+
+       EID ENAME                    ROWNUM          R
+---------- -------------------- ---------- ----------
+       108 mythri                        1      65221
+
+SQL> select eid,ename,rownum r,sal from (select * from employee order by sal des
+c) where rownum=&a;
+Enter value for a: 1
+old   1: select eid,ename,rownum r,sal from (select * from employee order by sal
+ desc) where rownum=&a
+new   1: select eid,ename,rownum r,sal from (select * from employee order by sal
+ desc) where rownum=1
+
+       EID ENAME                         R        SAL
+---------- -------------------- ---------- ----------
+       108 mythri                        1      65221
+
+SQL> select eid,ename,sal from (select * from employee order by sal desc) where
+rownum=&a;
+Enter value for a: 1
+old   1: select eid,ename,sal from (select * from employee order by sal desc) wh
+ere rownum=&a
+new   1: select eid,ename,sal from (select * from employee order by sal desc) wh
+ere rownum=1
+
+       EID ENAME                       SAL
+---------- -------------------- ----------
+       108 mythri                    65221
+
+SQL> select eid,ename,sal from (select * from employee order by sal desc) where
+rownum=&a;
+Enter value for a: 2
+old   1: select eid,ename,sal from (select * from employee order by sal desc) wh
+ere rownum=&a
+new   1: select eid,ename,sal from (select * from employee order by sal desc) wh
+ere rownum=2
+
+no rows selected
+
+SQL> select eid,ename,rownum r,sal from (select * from employee order by sal des
+c) where rownum=&a;
+Enter value for a: 2
+old   1: select eid,ename,rownum r,sal from (select * from employee order by sal
+ desc) where rownum=&a
+new   1: select eid,ename,rownum r,sal from (select * from employee order by sal
+ desc) where rownum=2
+
+no rows selected
+
+SQL> select * from employee order by sal desc where rownum<=1;
+select * from employee order by sal desc where rownum<=1
+                                         *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select * from employee where rownum<=1 order by sal desc;
+
+       EID ENAME                       SAL DEPT       JDATE
+---------- -------------------- ---------- ---------- ---------
+       100 peter                      5000 ece
+
+SQL> select * from employee where rownum<=1 order by sal asc;
+
+       EID ENAME                       SAL DEPT       JDATE
+---------- -------------------- ---------- ---------- ---------
+       100 peter                      5000 ece
+
+SQL> select * from (select max(sal),eid,ename,dept from employee);
+select * from (select max(sal),eid,ename,dept from employee)
+                               *
+ERROR at line 1:
+ORA-00937: not a single-group group function
+
+
+SQL> select max(sal),eid,ename,dept from employee
+  2  ;
+select max(sal),eid,ename,dept from employee
+                *
+ERROR at line 1:
+ORA-00937: not a single-group group function
+
+
+SQL> select max(sal) from employee;
+
+  MAX(SAL)
+----------
+     65221
+
+SQL> select eid,max(sal) from employee;
+select eid,max(sal) from employee
+       *
+ERROR at line 1:
+ORA-00937: not a single-group group function
+
+
+SQL> select max as sal from employee;
+select max as sal from employee
+       *
+ERROR at line 1:
+ORA-00904: "MAX": invalid identifier
+
+
+SQL> select sum(sal) from employee;
+
+  SUM(SAL)
+----------
+    371615
+
+SQL> create table orders(ordersid int,customerid );
