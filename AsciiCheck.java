@@ -1,66 +1,35 @@
-package org.tasks;
+package org.practice;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
+
+import org.pojos.SortModelClass;
 
 public class AsciiCheck {
 
 	public static void main(String[] args) {
 		
 		Scanner in = new Scanner(System.in);
-		System.out.println("Enter size");
-		int n=in.nextInt();
-		System.out.println("Enter Elements");
-		int a[] = new int[10];
-		HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
-		for(int i=0;i<n;i++)
+		System.out.println("Enter the string");
+		String s = in.next();
+		HashMap<Character,Integer> hs = new HashMap<Character, Integer>();
+		for(int i=0;i<s.length();i++)
 		{
-			a[i]=in.nextInt();
-			if(hm.containsKey(a[i]))
+			SortModelClass smc = new SortModelClass();
+			if(hs.containsKey(s.charAt(i)))
 			{
-				hm.put(a[i], hm.get(a[i])+1);
+				smc.setKey(s.charAt(i));
+				smc.setValue(hs.get(s.charAt(i))+1);
+				hs.put(s.charAt(i),hs.get(s.charAt(i))+1);
 			}
 			else
 			{
-				hm.put(a[i], 1);
-			}			
-		}
-		int v[] = new int[10];
-		int k[] = new int[10];
-		int p=0;
-		for(Map.Entry<Integer, Integer> en:hm.entrySet())
-		{
-			k[p]=en.getKey();
-			v[p]=en.getValue();
-			p++;
-		}
-		for(int i=0;i<p;i++)
-		{
-			for(int j=i+1;j<p;j++)
-			{
-				if(v[i]==v[j])
-				{
-					if(k[i]<k[j])
-					{
-						int temp=k[i];
-						k[i]=k[j];
-						k[j]=temp;
-					}
-				}
-				if(v[i]<v[j])
-				{
-					int temp=v[i];
-					v[i]=v[j];
-					v[j]=temp;
-					temp=k[i];
-					k[i]=k[j];
-					k[j]=temp;
-				}
+				smc.setKey(s.charAt(i));
+				smc.setValue(1);
+				hs.put(s.charAt(i), 1);
 			}
-			System.out.print(k[i]+" "+v[i]+"\n");
 		}
-
+		
 	}
 
 }

@@ -1,31 +1,27 @@
-package org.kartheek;
+package org.ravi;
 
 public class Salary {
 
-	double basic,da,hra;
-
-	public double getBasic() {
-		return basic;
+	double eHra;
+	double eDa;
+	double eBs;
+	public double geteHra() {
+		return eHra;
 	}
-
-	public void setBasic(double basic) {
-		this.basic = basic;
+	public void seteHra(double eHra) {
+		this.eHra = eHra;
 	}
-
-	public double getDa() {
-		return da;
+	public double geteDa() {
+		return eDa;
 	}
-
-	public void setDa(double da) {
-		this.da = da;
+	public void seteDa(double eDa) {
+		this.eDa = eDa;
 	}
-
-	public double getHra() {
-		return hra;
+	public double geteBs() {
+		return eBs;
 	}
-
-	public void setHra(double hra) {
-		this.hra = hra;
+	public void seteBs(double eBs) {
+		this.eBs = eBs;
 	}
 	
 }
