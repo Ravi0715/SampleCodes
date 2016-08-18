@@ -1,27 +1,45 @@
-import java.util.*;
-import java.lang.*;
-class Task2
-{
-public static void main (String[] args)
-{
- Scanner sc = new Scanner(System.in);
- System.out.println("enter string:");
- String str = sc.next();
- StringBuffer sb = new StringBuffer();
- int max=0;String ls=null;
- for(int i=0;i<str.length()-1;i++){   if(str.charAt(i)+1!=str.charAt(i+1)){
-     sb.append(str.charAt(i));
-     if(sb.length()>max){
-       max=sb.length();
-       ls=sb.toString();
-     } 
-     sb=null; 
-     sb= new StringBuffer(); 
-   }
-   else
-    sb.append(str.charAt(i));
-     
- }
-System.out.println("Largest consecutive sequence is:"+ls);
-}
+package practice.tasks;
+
+
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.TreeMap;
+
+public class Task2 {
+
+	public static void main(String[] args) {
+		
+		Scanner in = new Scanner(System.in);
+		TreeMap<StringCk, String> tm = new TreeMap<StringCk, String>(new ArrangeComparator());
+		System.out.println("Enter the no. of strings:");
+		int size=in.nextInt();
+		String str[]= new String[size];
+		System.out.println("Enter the strings:");
+		for(int i=0;i<size;i++)
+			str[i]=in.next();
+		for(int i=0;i<str.length;i++)
+		{
+			int asciiCount=0;int charCount=0;
+			StringCk sck = new StringCk();
+			HashSet<Character> hs = new HashSet<Character>();
+			for(int j=0;j<str[i].length();j++)
+			{
+				asciiCount+=str[i].charAt(j);
+				if(hs.contains(str[i].charAt(j)))
+					charCount++;
+				else
+					hs.add(str[i].charAt(j));
+			}
+			charCount=charCount>=1?charCount+1:charCount;
+			//System.out.println(str[i]+" "+asciiCount+" "+charCount);
+			sck.setAsciiCount(asciiCount);
+			sck.setCharCount(charCount);
+			tm.put(sck, str[i]);
+		}
+		//System.out.println(tm);
+		System.out.println("Strings after order:");
+		for(String s:tm.values())
+			System.out.println(s);
+	}
+
 }
