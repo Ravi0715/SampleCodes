@@ -1,18 +1,23 @@
-package org.student;
+package practice.pojos;
 
-public class Student {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class Student implements Serializable {
+
 	
-	String sId;
-	String sName;
-	String sDept;
-	Marks sMarks[];
+	String sId,sName,sDept;
 	
-	public Marks[] getsMarks() {
-		return sMarks;
+	ArrayList<Marks> listMarks;
+	
+	public ArrayList<Marks> getListMarks() {
+		return listMarks;
 	}
-	public void setsMarks(Marks[] marks) {
-		this.sMarks = marks;
+	
+	public void setListMarks(ArrayList<Marks> listMarks) {
+		this.listMarks = listMarks;
 	}
+	
 	public String getsId() {
 		return sId;
 	}
@@ -31,5 +36,7 @@ public class Student {
 	public void setsDept(String sDept) {
 		this.sDept = sDept;
 	}
-
+	
+	
+	
 }
